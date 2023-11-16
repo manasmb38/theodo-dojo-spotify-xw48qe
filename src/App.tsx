@@ -9,10 +9,16 @@ const trackUrls = [
   'https://p.scdn.co/mp3-preview/ac28d1b0be285ed3bfd8e9fa5fad133776d7cf36',
 ];
 
+
+import { useState } from 'react';
+
 const App = () => {
+  const [trackIndex, setTrackIndex] = useState(0)
+const goToNextTrack = () => {
+  setTrackIndex(trackIndex + 1);
+}
   return (
     <div className="App">
-      <audio src={trackUrls[0]} autoPlay controls />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title"> T'es prêt pour le Blind test ? </h1>
@@ -20,6 +26,10 @@ const App = () => {
       <div className="App-images">
         <p>Il va falloir modifier le code pour faire un vrai blind test !</p>
       </div>
+      <audio src={trackUrls[trackIndex]} autoPlay controls />
+      <button onClick={goToNextTrack}>
+        Next track
+      </button>
       <div className="App-buttons"></div>
     </div>
   );
